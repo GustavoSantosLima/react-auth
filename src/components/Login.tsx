@@ -23,7 +23,7 @@ const Login = () => {
     try {
       await auth.authenticate(email, password);
 
-      navigate("/profile");
+      navigate("/");
     } catch (e) {
       console.error("E-mail ou senha incorretos!");
     }

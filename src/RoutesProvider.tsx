@@ -6,17 +6,15 @@ import Home from "./components/Home";
 import Contact from "./components/Contact";
 import About from "./components/About";
 
-const privateComponents = (component: JSX.Element) => {
-  return <ProtectedLayout>{component}</ProtectedLayout>;
-};
-
 function RoutesProvider() {
   return (
     <Routes>
-      <Route path="/" element={privateComponents(<Home />)} />
-      <Route path="/profile" element={privateComponents(<Profile />)} />
-      <Route path="/contact" element={privateComponents(<Contact />)} />
-      <Route path="/about" element={privateComponents(<About />)} />
+      <Route path="/" element={<ProtectedLayout />}>
+        <Route index element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/profile" element={<Profile />} />
+      </Route>
 
       <Route path="/login" element={<Login />}></Route>
       <Route path="*" element={<Navigate to="/login" />} />

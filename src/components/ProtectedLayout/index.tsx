@@ -1,9 +1,8 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthProvider/useAuth";
-import { getUserLocalStorage } from "../../contexts/AuthProvider/util";
 import Menu from "../Layout/Menu";
 
-export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
+export const ProtectedLayout = () => {
   const auth = useAuth();
 
   if (!auth.token) {
@@ -13,8 +12,7 @@ export const ProtectedLayout = ({ children }: { children: JSX.Element }) => {
   return (
     <main id="main">
       <Menu />
-
-      <div>{children}</div>
+      <Outlet />
     </main>
   );
 };
